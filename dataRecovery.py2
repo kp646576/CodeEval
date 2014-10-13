@@ -1,0 +1,29 @@
+# https://www.codeeval.com/open_challenges/140/
+import sys
+
+def main():
+        f = open(sys.argv[1], "r")
+        Lines = f.readlines()
+        for Line in Lines:
+                parsedLine = Line.split(";")
+                words = parsedLine[0].strip().split(" ")
+                readWords = parsedLine[0].strip().split(" ")
+                indecies = parsedLine[1].strip().split(" ")
+
+                # Move words into correct index
+                for index, value in enumerate(indecies):
+                        newIndex = int(value) - 1
+                        words[newIndex] = readWords[index]
+
+                # Find and move unlisted index
+                for i in range(1, len(words) + 1):
+                        if str(i) not in indecies:
+                                words[i - 1] = readWords[-1]
+
+                for i in words:
+                        print i,
+                print ""
+        f.close()
+
+if __name__ == "__main__":
+        main()
