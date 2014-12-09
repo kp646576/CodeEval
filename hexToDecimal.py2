@@ -1,0 +1,18 @@
+#https://www.codeeval.com/open_challenges/67/
+import sys
+
+def hexToDec(s):
+	return sum([pow(16,len(s) - (i + 1)) * charHexToDec(c) for i, c in enumerate(s)])
+
+def charHexToDec(c):
+	dec = -1
+	neoc = ord(c)
+	if (neoc >= 97 and neoc <= 102):
+		dec = neoc - 87
+	elif (neoc >= 48 and neoc <= 57):
+		dec = neoc - 48
+	return dec
+
+f = open(sys.argv[1], 'r')
+for line in f.readlines():
+	print hexToDec(line.strip())
