@@ -1,0 +1,22 @@
+# https://www.codeeval.com/open_challenges/40
+import sys
+
+def compare(line, count):
+  for i, c in enumerate(line):
+    if count[i] != int(c):
+      return 0
+  return 1
+
+def main():
+  f = open(sys.argv[1], 'r')
+  lines = f.readlines()
+  for line in lines:
+    count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    line = line.strip()
+    for c in line:
+      count[int(c)] += 1
+    print compare(line, count)
+  f.close()
+
+if __name__ == "__main__":
+  main()
